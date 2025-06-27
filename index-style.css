@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.name {
+  font-weight: 600;
+  color:#E15959;
+}
+
+body {
+  position: relative; /* establish stacking context */
+  z-index: 0;
+  background-image: url('pngs/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: 'Onest', sans-serif;
+  color: #222;
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw;
+  flex: 1;
+}
+
+main {
+  flex: 1; /* This fills all space between header and footer */
+}
+
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('vectors/noise.svg'); /* use a small repeating texture */
+  background-repeat: repeat;
+  opacity: 0.6; /* subtle effect */
+  z-index: -1;   /* behind all content */
+  pointer-events: none;
+}
+
+header {
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.logo {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 3pt;
+}
+
+/* Dev Card */
+/* .card {
+  background-image: url('devButtonBg.png'); 
+  background-size: cover;                  
+  background-position: center;            
+  background-repeat: no-repeat; 
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  width: 300px; 
+  height: 110px; 
+  padding: 0px 19px;  
+  border-radius: 17px; 
+  flex-direction: column; 
+  justify-content: center; 
+  display: inline-flex;
+}
+
+.dev-sent {
+  color: #F6F6F6;
+  font-size: 12pt;
+  font-weight: 100;
+}
+
+.dev-button {
+  height: 32px; 
+  font-size: 14pt;
+  font-weight: 300;
+  color: #eee;
+  background: transparent;
+  border: 2px solid;
+  border-image: linear-gradient(to right, #E15959, #ffffff, #E15959) 1;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-size: 12pt;
+  justify-content: center; 
+  align-items: center; 
+  gap: 10px; 
+  display: inline-flex
+}
+
+.dev-button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}*/
+
+
+@media screen and (max-width: 768px) {
+  .intro-sent {
+    width: 100%;          /* Allow full width */
+    font-size: 1rem;    /* Slightly smaller for mobile */
+  }
+
+  .intro {
+    margin-top: 3rem;     /* Less top margin on smaller screens */
+    padding: 0 1rem;      /* Tighter padding */
+  }
+}
+
+.intro {
+  max-width: 800px;
+  margin-top: 6rem;
+  padding: 0 2rem;
+  text-align: left;
+}
+
+.intro p {
+  margin: 0.5rem 0;
+  font-weight: 400;
+}
+
+.intro-sent {
+  font-weight: 400;
+  font-size: 1.5rem;
+  width: 65%;
+}
+
+.talk-btn {
+  padding: 0.5rem 1.2rem;
+  background-color: #ff5c5c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.divider {
+  margin: 1rem 2rem 1rem;
+  width: calc(100% - 4rem);
+  border-top: 1px solid #999;
+}
+
+.Overview-sent {
+  padding: 0rem 2rem;
+  position: relative;
+  align-items: flex-start;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.projects {
+  margin: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.project-image {
+  width: 342px;
+  height: 151px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-title {
+  margin-top: 0.5rem;
+  font-weight: 200;
+  text-align: left;
+  padding-left: 0.5rem;
+}
+
+.link-section {
+  padding: 10px 0px;
+}
+
+.link-item {
+  display: flex;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+a:link { 
+  color: black;
+}
+a:visited { 
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+.footer {
+  background-color: rgba(255, 92, 92);
+  padding: 1.5rem 2rem;
+  color: #f6f6f6;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+/* Footer logo */
+.footer-logo {
+  width: 40px;
+  height: auto;
+}
+
+/* Footer social icons */
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-icon:hover {
+  opacity: 1;
+}
+
+/* Responsive Layout: Horizontal for wider screens */
+@media screen and (min-width: 768px) and (orientation: landscape) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .footer-text {
+    margin: 0 1rem;
+  }
+}
+
+
+
+
+
