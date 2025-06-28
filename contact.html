@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - Hamza</title>
+  <link rel="stylesheet" href="stylesheets/contact-style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Now</h1>
+    <div class="form-card">
+      <div class="tagline">
+        <p>WANT TO ELEVATE YOUR BRAND?</p>
+      </div>
+      <form id="contact-form">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="about:blank"> <!-- Avoids redirect -->
+        
+        <label for="company">Company Name</label> 
+        <input type="text" name="name" required placeholder="Your name">
+        <label for="email">Email</label>
+        <input type="email" name="email" required placeholder="Your email">
+        <label for="message">Message</label>
+        <textarea name="message" required placeholder="Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <img src="vectors/Header Logo.svg" alt="Logo" class="footer-logo"/>
+  </div>
+  <div id="emailModal" class="modal">
+    <div class="modal-content">
+      <h2>Email Sent Successfully! ✅</h2>
+      <p>Do you want to go back to the homepage?</p>
+      <div class="modal-buttons">
+        <button onclick="goHome()">Yes</button>
+        <button onclick="closeModal()">No</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script>
+  const form = document.getElementById('contact-form');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // stop default submission
+
+    const formData = new FormData(form);
+
+    fetch("https://formsubmit.co/f3f157e051ea673e8d17ed88eecb7c88", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        showNotification(); // ← the notification function from earlier
+      } else {
+        alert("Something went wrong. Try again.");
+      }
+    })
+    .catch(error => {
+      alert("Failed to send. Please try again.");
+    });
+  });
+
+  function showNotification() {
+  const modal = document.getElementById("emailModal");
+  modal.style.display = "flex";
+  }
+
+  function goHome() {
+    window.location.href = "/";
+  }
+
+  function closeModal() {
+    document.getElementById("emailModal").style.display = "none";
+  }
+  </script>
+
+
+</body>
+</html>

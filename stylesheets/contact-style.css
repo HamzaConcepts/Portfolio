@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Onest', sans-serif;
+    background-image: url('../pngs/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    color: #111;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../pngs/noise.png');
+    background-repeat: repeat;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.container h1 {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+/* ───────────────────────────────
+   CONTACT CARD (2-column layout)
+   ─────────────────────────────── */
+/* .form-card {
+
+    max-width: 1500px;
+    min-height: 550px;
+    margin: 0 auto;
+    
+    background-image: url('../pngs/form-card.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; 
+    
+    border-radius: 25px;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 0.35fr 0.65fr;
+    column-gap: 3rem;
+    padding: 3rem 3.5rem;
+
+    align-items: center;
+} */
+
+.form-card {
+    position: relative;
+    max-width: 1500px;
+    min-height: 500px;
+    background-color: #e15959;
+    border-radius: 25px;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 0.35fr 0.65fr;
+    column-gap: 3rem;
+    padding: 1rem 2.5rem;
+    margin: 2rem;
+    align-items: center;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background-color: #e15959;
+  filter: blur(10px);
+  z-index: -1;
+  border-radius: 16px;
+}
+
+
+.form-card .tagline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: #fff;
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: pre-line;
+    padding: 1rem 0rem;
+}
+
+.tagline {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+}
+
+/* ───────────────
+   FORM styling
+   ─────────────── */
+form {
+    justify-self: stretch;
+    align-self: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+form label {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: white;
+    text-align: left;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Onest', sans-serif;
+    font-size: 1rem;
+    resize: none;
+    box-sizing: border-box;
+}
+
+button {
+    font-family: 'Onest', sans-serif;
+    align-self: flex-end;
+    padding: 0.45rem 1.2rem;
+    background: #fff;
+    color: #e15959;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ───────────────
+   Footer logo
+   ─────────────── */
+.footer-logo {
+    margin-top: 3rem;
+    width: 100px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.modal-buttons {
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #e53935;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #c62828;
+}
+
+
+
+
+
+
+/* ───────────────────────────────
+   Responsive adjustments
+   ─────────────────────────────── */
+@media (max-width: 768px) {
+    .form-card {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 2rem 1.5rem;
+        row-gap: 2rem;
+    }
+
+    .form-card .tagline {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    button {
+        align-self: flex-start;
+    }
+}
