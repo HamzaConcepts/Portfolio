@@ -32,7 +32,7 @@ body {
 }
 
 main {
-  flex: 1; /* This fills all space between header and footer */
+  flex: 1;
 }
 
 
@@ -61,7 +61,7 @@ header {
 
 .logo {
   position: absolute;
-  top: 1rem;
+  top: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
   margin-top: 3pt;
@@ -153,6 +153,12 @@ header {
   border-radius: 20px;
   cursor: pointer;
   font-weight: 300;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.talk-btn:hover {
+  background-color: #b64646;
+  color: white;
 }
 
 .divider {
@@ -167,6 +173,7 @@ header {
   align-items: flex-start;
   font-weight: 600;
   font-size: 1.5rem;
+  margin-bottom: 0;
 }
 
 .projects {
@@ -205,21 +212,19 @@ header {
 
 a:link { 
   color: black;
+  text-decoration: none;
 }
 a:visited { 
   color: black;
 }
 
-
-
-
-
-
-
+#cta-text {
+ margin-top: 0rem;
+}
 
 
 .footer {
-  background-color: rgba(255, 92, 92);
+  background-color: #ff5c5c;
   padding: 1.5rem 2rem;
   color: #f6f6f6;
   font-size: 0.9rem;
@@ -274,3 +279,37 @@ a:visited {
 
 
 
+.animated-underline {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  color: inherit;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* smooth easing */
+}
+
+
+.link-item a:hover .animated-underline::after {
+  width: 0%;
+}
+
+
+.link-item a:hover .arrow {
+  transform: translateY(-3px); /* moves arrow up */
+  transition: transform 0.3s ease;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  margin-left: 8px;
+  vertical-align: middle;
+}
