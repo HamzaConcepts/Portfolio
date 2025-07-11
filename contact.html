@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact - Hamza</title>
-  <link rel="stylesheet" href="stylesheets/contact-style.css" />
+  <link rel="stylesheet" href="stylesheets/contact-style.css"/>
+  <link rel="icon" href="pngs/favicon.png" type="image/png">
 </head>
 <body>
   <div class="container">
-    <h1>Contact Now</h1>
+    <h1>Let’s build a successful brand together!</h1>
     <div class="form-card">
       <div class="tagline">
         <p>WANT TO ELEVATE YOUR BRAND?</p>
@@ -17,70 +18,61 @@
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="about:blank"> <!-- Avoids redirect -->
-        
+
         <label for="company">Company Name</label> 
         <input type="text" name="name" required placeholder="Your name">
         <label for="email">Email</label>
         <input type="email" name="email" required placeholder="Your email">
         <label for="message">Message</label>
         <textarea name="message" required placeholder="Message"></textarea>
-        <button type="submit">Send</button>
+        <button type="submit" id="submit-btn">Send</span></button>
       </form>
     </div>
 
     <img src="vectors/Header Logo.svg" alt="Logo" class="footer-logo"/>
   </div>
-  <div id="emailModal" class="modal">
-    <div class="modal-content">
-      <h2>Email Sent Successfully! ✅</h2>
-      <p>Do you want to go back to the homepage?</p>
-      <div class="modal-buttons">
-        <button onclick="goHome()">Yes</button>
-        <button onclick="closeModal()">No</button>
-      </div>
-    </div>
-  </div>
-
-
 
 
   <script>
-  const form = document.getElementById('contact-form');
+    const form = document.querySelector("form");
+    const submitBtn = document.getElementById("submit-btn");
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); // stop default submission
+    // Save original text content
+    const originalBtnText = submitBtn.innerHTML;
 
-    const formData = new FormData(form);
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    fetch("https://formsubmit.co/1d584fded23d4441cb828c00f80fcaa5", {
-      method: "POST",
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        form.reset();
-        showNotification(); // ← the notification function from earlier
-      } else {
-        alert("Something went wrong. Try again.");
-      }
-    })
-    .catch(error => {
-      alert("Failed to send. Please try again.");
+      // Show loader, disable button, change text
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `Sending<span class="loader" id="loader"></span>`;
+
+      const formData = new FormData(form);
+
+      fetch("https://formsubmit.co/syedmhamzaasif@gmail.com", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        loader.style.display = "none";
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+
+        if (response.ok) {
+          form.reset();
+          window.location.href = "/email-sent.html"; // Redirect to success page
+        } else {
+          alert("Error while sending mail.") // fallback or error display
+        }
+      })
+      .catch(error => {
+        loader.style.display = "none";
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        alert("Failed to send. Please try again.");
+      });
     });
-  });
 
-  function showNotification() {
-  const modal = document.getElementById("emailModal");
-  modal.style.display = "flex";
-  }
-
-  function goHome() {
-    window.location.href = "/";
-  }
-
-  function closeModal() {
-    document.getElementById("emailModal").style.display = "none";
-  }
   </script>
 
 
