@@ -44,6 +44,7 @@ body::before {
 }
 
 .talk-btn {
+    font-family: 'Onest', sans-serif;
     padding: 0.5rem 1.2rem;
     background-color: #E15959;
     color: white;
@@ -51,7 +52,13 @@ body::before {
     border-radius: 20px;
     cursor: pointer;
     font-weight: 300;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.talk-btn:hover {
+    background-color: #c14747; 
+    color: white;
+  }
 
 .about-grid {
     display: grid;
@@ -191,3 +198,36 @@ p {
     margin: 0 1rem;
   }
 }
+
+
+
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0rem;
+}
+
+.project-tile {
+  text-align: left;
+}
+
+.project-image {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Keeps rectangle proportional */
+  background-color: #ccc; /* Placeholder */
+  margin-bottom: 0.75rem;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: #555;
+}
+
